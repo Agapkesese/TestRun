@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Settings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="settings-container">
+        <h1>App Settings</h1>
+        
+        <div class="settings-section" id="accessibility">
+            <h2>Accessibility</h2>
+            <label><input type="checkbox" id="screenReader"> Enable Screen Reader</label>
+            <label><input type="checkbox" id="highContrast"> High Contrast Mode</label>
+            <label><input type="range" id="textSize" min="12" max="24"> Text Size</label>
+            <label><input type="checkbox" id="keyboardShortcuts"> Enable Keyboard Shortcuts</label>
+            <label><input type="checkbox" id="reduceAnimations"> Reduce Animations</label>
+        </div>
+
+        <div class="settings-section" id="block">
+            <h2>Block/Unblock</h2>
+            <input type="text" id="blockUser" placeholder="Enter username/email">
+            <button onclick="blockUser()">Block</button>
+            <h3>Blocked Users</h3>
+            <ul id="blockedUsers"></ul>
+        </div>
+
+        <div class="settings-section" id="chat">
+            <h2>Chat</h2>
+            <label><input type="checkbox" id="messageRequests"> Allow Message Requests</label>
+            <label><input type="checkbox" id="readReceipts"> Show Read Receipts</label>
+            <label><input type="checkbox" id="typingIndicator"> Show Typing Indicators</label>
+            <label><input type="color" id="chatTheme"> Chat Theme Color</label>
+            <button onclick="backupChat()">Backup Chat</button>
+        </div>
+
+        <div class="settings-section" id="language">
+            <h2>Language</h2>
+            <select id="appLanguage">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+            </select>
+            <label><input type="checkbox" id="autoTimezone"> Auto-detect Timezone</label>
+        </div>
+
+        <div class="settings-section" id="privacy">
+            <h2>Privacy</h2>
+            <label><input type="checkbox" id="publicProfile"> Public Profile</label>
+            <label><input type="checkbox" id="showActivity"> Show Online Status</label>
+            <label><input type="checkbox" id="restrictComments"> Restrict Comments</label>
+            <button onclick="requestDataDownload()">Download My Data</button>
+        </div>
+    </div>
+
+    <script src="/src/script.js"></script>
+</body>
+</html>
