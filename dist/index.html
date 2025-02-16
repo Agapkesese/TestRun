@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App Settings</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-size: var(--text-size, 16px);
+        }
+    </style>
 </head>
 <body>
     <div class="settings-container">
@@ -12,11 +17,11 @@
         
         <div class="settings-section" id="accessibility">
             <h2>Accessibility</h2>
-            <label><input type="checkbox" id="screenReader"> Enable Screen Reader</label>
-            <label><input type="checkbox" id="highContrast"> High Contrast Mode</label>
-            <label><input type="range" id="textSize" min="12" max="24"> Text Size</label>
-            <label><input type="checkbox" id="keyboardShortcuts"> Enable Keyboard Shortcuts</label>
-            <label><input type="checkbox" id="reduceAnimations"> Reduce Animations</label>
+            <label class="toggle"><input type="checkbox" id="screenReader" onchange="saveSetting('screenReader')"><span class="slider"></span> Enable Screen Reader</label>
+            <label class="toggle"><input type="checkbox" id="highContrast" onchange="saveSetting('highContrast')"><span class="slider"></span> High Contrast Mode</label>
+            <label><input type="range" id="textSize" min="12" max="24" oninput="updateTextSize()"> Text Size</label>
+            <label class="toggle"><input type="checkbox" id="keyboardShortcuts" onchange="saveSetting('keyboardShortcuts')"><span class="slider"></span> Enable Keyboard Shortcuts</label>
+            <label class="toggle"><input type="checkbox" id="reduceAnimations" onchange="saveSetting('reduceAnimations')"><span class="slider"></span> Reduce Animations</label>
         </div>
 
         <div class="settings-section" id="block">
@@ -29,32 +34,77 @@
 
         <div class="settings-section" id="chat">
             <h2>Chat</h2>
-            <label><input type="checkbox" id="messageRequests"> Allow Message Requests</label>
-            <label><input type="checkbox" id="readReceipts"> Show Read Receipts</label>
-            <label><input type="checkbox" id="typingIndicator"> Show Typing Indicators</label>
-            <label><input type="color" id="chatTheme"> Chat Theme Color</label>
+            <label class="toggle"><input type="checkbox" id="messageRequests" onchange="saveSetting('messageRequests')"><span class="slider"></span> Allow Message Requests</label>
+            <label class="toggle"><input type="checkbox" id="readReceipts" onchange="saveSetting('readReceipts')"><span class="slider"></span> Show Read Receipts</label>
+            <label class="toggle"><input type="checkbox" id="typingIndicator" onchange="saveSetting('typingIndicator')"><span class="slider"></span> Show Typing Indicators</label>
+            <label><input type="color" id="chatTheme" onchange="saveSetting('chatTheme')"> Chat Theme Color</label>
             <button onclick="backupChat()">Backup Chat</button>
         </div>
 
         <div class="settings-section" id="language">
             <h2>Language</h2>
-            <select id="appLanguage">
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="es">Spanish</option>
+            <select id="appLanguage" onchange="saveSetting('appLanguage')">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="pt">Portuguese</option>
+            <option value="ru">Russian</option>
+            <option value="zh">Chinese</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="ar">Arabic</option>
+            <option value="hi">Hindi</option>
+            <option value="bn">Bengali</option>
+            <option value="pa">Punjabi</option>
+            <option value="jv">Javanese</option>
+            <option value="ms">Malay</option>
+            <option value="te">Telugu</option>
+            <option value="vi">Vietnamese</option>
+            <option value="ta">Tamil</option>
+            <option value="ur">Urdu</option>
+            <option value="fa">Persian</option>
+            <option value="tr">Turkish</option>
+            <option value="th">Thai</option>
+            <option value="pl">Polish</option>
+            <option value="uk">Ukrainian</option>
+            <option value="ro">Romanian</option>
+            <option value="nl">Dutch</option>
+            <option value="el">Greek</option>
+            <option value="hu">Hungarian</option>
+            <option value="sv">Swedish</option>
+            <option value="fi">Finnish</option>
+            <option value="no">Norwegian</option>
+            <option value="da">Danish</option>
+            <option value="cs">Czech</option>
+            <option value="sk">Slovak</option>
+            <option value="bg">Bulgarian</option>
+            <option value="sr">Serbian</option>
+            <option value="hr">Croatian</option>
+            <option value="he">Hebrew</option>
+            <option value="id">Indonesian</option>
+            <option value="tl">Tagalog</option>
+            <option value="my">Burmese</option>
+            <option value="km">Khmer</option>
+            <option value="lo">Lao</option>
+            <option value="si">Sinhala</option>
+            <option value="ne">Nepali</option>
+            <option value="am">Amharic</option>
+            <option value="sw">Swahili</option>
+            <option value="yo">Yoruba</option>
             </select>
-            <label><input type="checkbox" id="autoTimezone"> Auto-detect Timezone</label>
+            <label class="toggle"><input type="checkbox" id="autoTimezone" onchange="saveSetting('autoTimezone')"><span class="slider"></span> Auto-detect Timezone</label>
         </div>
 
         <div class="settings-section" id="privacy">
             <h2>Privacy</h2>
-            <label><input type="checkbox" id="publicProfile"> Public Profile</label>
-            <label><input type="checkbox" id="showActivity"> Show Online Status</label>
-            <label><input type="checkbox" id="restrictComments"> Restrict Comments</label>
+            <label class="toggle"><input type="checkbox" id="publicProfile" onchange="saveSetting('publicProfile')"><span class="slider"></span> Public Profile</label>
+            <label class="toggle"><input type="checkbox" id="showActivity" onchange="saveSetting('showActivity')"><span class="slider"></span> Show Online Status</label>
+            <label class="toggle"><input type="checkbox" id="restrictComments" onchange="saveSetting('restrictComments')"><span class="slider"></span> Restrict Comments</label>
             <button onclick="requestDataDownload()">Download My Data</button>
         </div>
     </div>
-
-    <script src="/src/script.js"></script>
 </body>
+<script src="/src/script.js"></script>
 </html>
